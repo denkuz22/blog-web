@@ -1,0 +1,32 @@
+{% extends 'myblog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <h4 style="color:rgb(54, 54, 54);" class='center col s12 teal-text'>Enter your credentials below</h4><br>
+  </div>
+
+    <div class="row">  
+      <div class="card col s6 offset-s3">
+        <div class="card-content s12">
+          <form style="padding-left: 10px;padding-right:10px" method='POST' action="">
+            {% csrf_token %}
+            <div class="row">
+              {{form|crispy}}
+              <div class="row">
+                <h6 class='blue-text left col s12 m6 l8'>Don't have an account with us?<a class='teal-text' href="{% url 'register' %}"> Sign Up</a></h6>
+                <button class="btn waves-effect waves-light btn-large #64b5f6 blue lighten-2 right col s12 m5 l3" type="submit" name="action">Log In
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+{% endblock content %}

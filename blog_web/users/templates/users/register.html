@@ -1,0 +1,26 @@
+{% extends 'myblog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+  <h1 class='center'>Join our Blog Today!</h1>
+    <div class="row">  
+      <div class="card col s6 offset-s3">
+        <div class="card-content">
+          <form style="padding-left: 10px;padding-right:10px" method='POST' action="">
+            {% csrf_token %}
+            <div class="row">
+              {{form|crispy}}
+              <h6 class='blue-text left'>Already have an account with us?<a class='teal-text' href="{% url 'login' %}"> Log In</a></h6>
+              <button class="btn waves-effect waves-light btn-large #64b5f6 blue lighten-2 right" type="submit" name="action">Sign Up
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+{% endblock content %}

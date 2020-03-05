@@ -1,0 +1,46 @@
+<!-- Navbar -->
+<nav style="opacity: 0.9;" class='#1a237e indigo darken-4'>
+  <div class="nav-wrapper">
+    <a href="{% url 'home' %}" class="brand-logo center truncate">What's on your mind?</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      
+    </ul>
+    {% if user.is_authenticated %}
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+    {% else %}
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Sign Up</a></li>
+      </ul>
+    {% endif %}
+
+  </div>
+</nav>
+<!-- Nav when resizing the screen -->
+{% if user.is_authenticated %}
+<ul class="sidenav" style="opacity: 0.8;" id="mobile-demo">
+  <li><a href="{% url 'home' %}">Home</a></li>
+  <div class="divider"></div>
+  <li><a href="{% url 'about' %}">About</a></li>
+  <div class="divider"></div>
+  <li><a href="{% url 'profile' %}">Profile</a></li>
+  <div class="divider"></div>
+  <li><a href="{% url 'logout' %}">Logout</a></li>
+</ul>
+{% else %}
+<ul class="sidenav" style="opacity: 0.8;" id="mobile-demo">
+  <li><a href="{% url 'home' %}">Home</a></li>
+  <div class="divider"></div>
+  <li><a href="{% url 'about' %}">About</a></li>
+  <div class="divider"></div>
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <div class="divider"></div>
+  <li><a href="{% url 'register' %}">Sign Up</a></li>
+</ul>
+{% endif %}

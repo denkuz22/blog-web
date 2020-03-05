@@ -1,0 +1,73 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="main-div col s6">
+      {% for post in posts %}
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img style="opacity:0.9;height:250px" src="{% static 'myblog/keyboard.jpg' %}">
+              <a href="#" class="card-title truncate">{{post.title}}</a>
+            </div>
+            <div class="card-content">
+              <p class='truncate'>{{post.content}}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">{{post.author}}</a>
+              {{post.date_posted}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+      <div style="position: static;" class="col s6">
+        <h4 class='center'>Search for any post!</h4>
+        <nav style="margin-top: 8px;" class='white'>
+          <div class="nav-wrapper white-text">
+            <form>
+              <div class="input-field">
+                <input class='black-text' id="search" type="search" placeholder='Type in here..' required>
+                <label class="label-icon black-text" for="search"><i style="color: black;" class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+        <div class="row">
+          <div class="col s12 m12 l8">
+            <div style="opacity: 0.9;" class="card #1a237e indigo darken-4">
+              <div class="card-content white-text">
+                <span class="card-title">Categories</span>
+                <br>
+                <div class="row">
+                  <div class="card-action col s12 m12">
+                    <i class="material-icons right">computer</i><a class="center" style="color: rgb(208, 243, 7);"  href="#"> Tech</a>
+                  </div>
+                  <div class="card-action col s12 m12">
+                    <i class="material-icons right">attach_money</i><a style="color: rgb(208, 243, 7);" href="#">Finance</a>
+                  </div>
+                  <div class="card-action col s12 m12">
+                    <i class="material-icons right">supervisor_account</i><a style="color: rgb(208, 243, 7);"  href="#"> Politics</a>
+                  </div>
+                  <div class="card-action col s12 m12 truncate">
+                    <i class="material-icons right">cloud_queue</i><a style="color: rgb(208, 243, 7);"  href="#"> Environment</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+{% endblock content %}
