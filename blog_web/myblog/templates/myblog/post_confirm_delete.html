@@ -3,18 +3,22 @@
 {% block content %}
 
 <div class="container">
-  <h1 class='center grey-text text-darken-2'>Join our Blog Today!</h1>
     <div class="row">  
       <div class="card col s6 offset-s3">
         <div class="card-content">
           <form style="padding-left: 10px;padding-right:10px" method='POST' action="">
             {% csrf_token %}
             <div class="row">
-              {{form|crispy}}
-              <h6 class='blue-text left'>Already have an account with us?<a class='teal-text' href="{% url 'login' %}"> Log In</a></h6>
-              <button class="btn waves-effect waves-light btn-large #64b5f6 blue lighten-2 right" type="submit" name="action">Sign Up
+              <h6>Are you sure you want to delete the post "{{object.title}}"?</h6>
+              <br>
+              
+              <button class="btn waves-effect waves-light btn-small #64b5f6 red" type="submit" name="action">DELETE
                 <i class="material-icons right">send</i>
               </button>
+              <a href="{% url 'post-detail' post.id %}" class="btn waves-effect waves-light btn-small #64b5f6 blue lighten-2 " type="submit" name="action">CANCEL
+                <i class="material-icons right">send</i>
+              </a>
+              
             </div>
           </form>
         </div>

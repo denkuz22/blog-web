@@ -1,0 +1,35 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="index-banner" class="parallax-container">
+ 
+      <div class="container">
+        <br><br>
+        <div>
+          <h1 style="font-family: 'Dancing Script', cursive;" class="header center white-text text-darken-1">{{object.title}}</h1>
+        </div>
+        
+        <div class="row center">
+          <h5 style="font-family: 'Bellota', cursive;" class="header col s12 white-text text-darken-1">By {{object.author}}</h5>
+        </div>
+        <div>
+          <p class="white-text post-meta black-text center"><i class="fa fa-clock-o"></i> {{object.date_posted}}</p>
+        </div>
+      </div>
+  <div class="parallax"><img src="{% static 'myblog/pen.jpg' %}" alt="Unsplashed background img 2"></div>
+</div>
+
+<div class="container">
+	<br>
+	<br>
+  <p>{{object.content}}</p>
+  {% if object.author == user %}
+  <a href="{% url 'post-update' object.id %}"><i class="material-icons">mode_edit</i>Update</a>
+  <a class='red-text' href="{% url 'post-delete' object.id %}"><i class="material-icons red-text">delete</i>Delete</a>
+  {% endif %}
+  <br>
+  <br>
+  <br>
+
+{% endblock content %}
